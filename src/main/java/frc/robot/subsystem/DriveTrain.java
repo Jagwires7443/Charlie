@@ -65,9 +65,4 @@ public class DriveTrain extends SubsystemBase {
         SmartDashboard.putNumber("Back Left Output ", m_BackLeftMotor.getAppliedOutput());
         SmartDashboard.putNumber("Back Right Output ", m_BackRightMotor.getAppliedOutput());
     }
-
-    // @Override
-    // public void initDefaultCommand() {
-    // setDefaultCommand(new TankDrive());
-    // }
 }

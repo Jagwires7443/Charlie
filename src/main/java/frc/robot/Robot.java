@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.SPI;
 
+import frc.robot.commands.TankDrive;
 import frc.robot.subsystem.DriveTrain;
 import frc.robot.subsystem.Piston;
 
@@ -62,6 +63,8 @@ public class Robot extends TimedRobot {
     } catch (RuntimeException ex) {
       DriverStation.reportError("Error with navX: " + ex.getMessage(), true);
     }
+
+    m_driveTrain.setDefaultCommand(new TankDrive());
 
     SmartDashboard.putBoolean("NavX Connection: ", m_ahrs.isConnected());
     SmartDashboard.putBoolean("NavX Calibrating: ", m_ahrs.isCalibrating());
