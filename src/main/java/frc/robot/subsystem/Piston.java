@@ -55,7 +55,4 @@ public class Piston extends SubsystemBase {
     public void lowerCargo() {
         cargoLiftSolenoid.set(Value.kReverse);
     }
-
-    public void initDefaultCommand() {
-    }
 }
