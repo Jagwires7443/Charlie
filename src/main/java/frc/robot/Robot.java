@@ -64,8 +64,6 @@ public class Robot extends TimedRobot {
       DriverStation.reportError("Error with navX: " + ex.getMessage(), true);
     }
 
-    m_driveTrain.setDefaultCommand(new TankDrive());
-
     SmartDashboard.putBoolean("NavX Connection: ", m_ahrs.isConnected());
     SmartDashboard.putBoolean("NavX Calibrating: ", m_ahrs.isCalibrating());
     SmartDashboard.putNumber("Heading: ", m_ahrs.getCompassHeading());
@@ -147,6 +145,7 @@ public class Robot extends TimedRobot {
   /** This function is called once when teleop is enabled. */
   @Override
   public void teleopInit() {
+    m_driveTrain.setDefaultCommand(new TankDrive());
   }
 
   /** This function is called periodically during operator control. */
@@ -172,6 +171,39 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during test mode. */
   @Override
   public void testPeriodic() {
+    // m_driveTrain.tankDrive(oi.getLeftYAxis(), oi.getRightYAxis());
+
+    if (oi.getAbutton()) {
+      m_driveTrain.leftA(0.25);
+      m_piston.pushHatch();
+    } else {
+      m_driveTrain.leftA(0.0);
+      m_piston.returnPiston();
+    }
+
+    if (oi.getXbutton()) {
+      m_driveTrain.rightA(0.25);
+      m_piston.liftRear();
+    } else {
+      m_driveTrain.rightA(0.0);
+      m_piston.lowerRear();
+    }
+
+    if (oi.getYbutton()) {
+      m_driveTrain.rightB(0.25);
+      m_piston.liftFront();
+    } else {
+      m_driveTrain.rightB(0.0);
+      m_piston.lowerFront();
+    }
+
+    if (oi.getBbutton()) {
+      m_driveTrain.leftB(0.25);
+      m_piston.liftCargo();
+    } else {
+      m_driveTrain.leftB(0.0);
+      m_piston.lowerCargo();
+    }
   }
 
   /** This function is called once when the robot is first started up. */

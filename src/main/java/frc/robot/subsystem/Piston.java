@@ -24,6 +24,13 @@ public class Piston extends SubsystemBase {
                 RobotMap.CARGO_LIFT_REVERSE_PORT);
     }
 
+    public void off() {
+        pistonSolenoid.set(Value.kOff);
+        rearLiftSolenoid.set(Value.kOff);
+        frontLiftSolenoid.set(Value.kOff);
+        cargoLiftSolenoid.set(Value.kOff);
+    }
+
     public void pushHatch() {
         pistonSolenoid.set(Value.kForward);
     }

@@ -1,6 +1,6 @@
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import frc.robot.commands.PushPiston;
@@ -18,7 +18,7 @@ import frc.robot.commands.ApproachSpeed;
 public class OI {
 
     // Joystick
-    private Joystick m_Joystick = new Joystick(RobotMap.JOYSTICK_PORT);
+    private XboxController m_Joystick = new XboxController(RobotMap.JOYSTICK_PORT);
 
     // Button mappings
     private JoystickButton fullSpeedButton = new JoystickButton(m_Joystick, RobotMap.FULL_SPEED_BUTTON);
@@ -51,7 +51,6 @@ public class OI {
         fullSpeedButton.whenPressed(new FullSpeed());
         halfSpeedButton.whenPressed(new HalfSpeed());
         approachSpeedButton.whenPressed(new ApproachSpeed());
-
     }
 
     public static void setSpeed(double speed) {
@@ -70,5 +69,21 @@ public class OI {
 
     public double getRightYAxis() {
         return getControllerAxis(RobotMap.RIGHT_DRIVE_STICK);
+    }
+
+    public boolean getXbutton() {
+        return m_Joystick.getXButton();
+    }
+
+    public boolean getYbutton() {
+        return m_Joystick.getYButton();
+    }
+
+    public boolean getAbutton() {
+        return m_Joystick.getAButton();
+    }
+
+    public boolean getBbutton() {
+        return m_Joystick.getBButton();
     }
 }

@@ -50,6 +50,11 @@ public class DriveTrain extends SubsystemBase {
         // m_BackRightMotor.setOpenLoopRampRate(.75);
         // m_BackRightMotor_Encoder = m_BackRightMotor.getEncoder();
 
+        m_FrontLeftMotor.setInverted(false);
+        m_FrontRightMotor.setInverted(true);
+        m_BackLeftMotor.setInverted(false);
+        m_BackRightMotor.setInverted(true);
+
         MotorControllerGroup leftMotors = new MotorControllerGroup(m_FrontLeftMotor, m_BackLeftMotor);
         MotorControllerGroup rightMotors = new MotorControllerGroup(m_FrontRightMotor, m_BackRightMotor);
 
@@ -70,5 +75,21 @@ public class DriveTrain extends SubsystemBase {
         // m_BackLeftMotor.getAppliedOutput());
         // SmartDashboard.putNumber("Back Right Output ",
         // m_BackRightMotor.getAppliedOutput());
+    }
+
+    public void leftA(double power) {
+        m_FrontLeftMotor.set(power);
+    }
+
+    public void leftB(double power) {
+        m_BackLeftMotor.set(power);
+    }
+
+    public void rightA(double power) {
+        m_FrontRightMotor.set(power);
+    }
+
+    public void rightB(double power) {
+        m_BackRightMotor.set(power);
     }
 }
